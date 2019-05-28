@@ -1,15 +1,13 @@
-//dependencies
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-//directory users
 const users = require('./routes/api/users');
 
 const app = express();
 
-//allow form data
+// Body parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -18,7 +16,7 @@ const db = require('./config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
