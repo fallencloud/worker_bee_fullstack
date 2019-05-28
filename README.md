@@ -1,13 +1,19 @@
 # Worker Bee
 
-This is the server side implementation of my Worker Bee app using Node, MongoDB, and Express.
+This is the full stack implementation of my Worker Bee app.
 
-## Tasks
+You can view it live at: https://worker-bee-fullstack.herokuapp.com/
 
-1. Created the default Express server.
-2. Create the User model.
-3. CRUD: Create: Add create users route.
-4. CRUD: Read: Add route to return all users.
-5. CRUD: Read: Add route to return single user.
-6. CRUD: Delete: Add route to delete single user.
-7. CRUD: Update: Add route to update single user.
+## Features
+
+### Client
+
+- Responsive UI with Bootstrap
+- Context API for state management
+- React Router for route management
+- Database calls with Axios
+
+### Server
+
+- MongoDB database
+- Express for middleware and route management
