@@ -17,17 +17,13 @@ class EditEmployee extends Component {
   async componentDidMount() {
     const { id } = this.props.match.params;
 
-    try {
-      const res = await axios.get(`/api/users/${id}`);
-      const employee = res.data;
-      this.setState({
-        name: employee.name,
-        email: employee.email,
-        phone: employee.phone
-      });
-    } catch (e) {
-      return;
-    }
+    const res = await axios.get(`/api/users/${id}`);
+    const employee = res.data;
+    this.setState({
+      name: employee.name,
+      email: employee.email,
+      phone: employee.phone
+    });
   }
 
   onChange = e => {

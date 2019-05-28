@@ -10,7 +10,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         employees: state.employees.filter(
-          employee => employee.id === action.payload
+          employee => employee._id === action.payload
         )
       };
     case 'ADD_EMPLOYEE':
@@ -18,11 +18,11 @@ const reducer = (state, action) => {
         ...state,
         employees: [action.payload, ...state.employees]
       };
-    case 'UPDATE_EMPLOYEE':
+    case 'UPDATE_EMPLOYEEE':
       return {
         ...state,
         employees: state.employees.map(employee =>
-          employee.id === action.payload.id
+          employee._id === action.payload._id
             ? (employee = action.payload)
             : employee
         )
@@ -31,7 +31,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         employees: state.employees.filter(employee =>
-          employee.id !== action.payload ? employee : null
+          employee._id !== action.payload ? employee : null
         )
       };
     default:
@@ -51,7 +51,7 @@ export class Provider extends Component {
   };
 
   getEmployee = id => {
-    const emp = this.state.employees.filter(employee => employee.id === id);
+    const emp = this.state.employees.filter(employee => employee._id === id);
     console.log(emp);
     return emp;
   };
@@ -59,7 +59,7 @@ export class Provider extends Component {
   //CRUD: Read data from API
   async componentDidMount() {
     //get data from db
-    const res = await axios.get('/api/users');
+    let res = await axios.get('/api/users');
 
     //write data to state
     this.setState({
@@ -67,16 +67,16 @@ export class Provider extends Component {
     });
   }
 
-  //Ensures app refreshes after state changes
-  async componentDidUpdate() {
-    //get data from db
-    const res = await axios.get('/api/users');
+  // //Ensures app refreshes after state changes
+  // async componentDidUpdate() {
+  //   //get data from db
+  //   const res = await axios.get('/api/users');
 
-    //write data to state
-    this.setState({
-      employees: res.data
-    });
-  }
+  //   //write data to state
+  //   this.setState({
+  //     employees: res.data
+  //   });
+  // }
 
   //external provider
   render() {
